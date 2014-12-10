@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Configuration>
+	<Authentication active="true" pathToNetrcFile="~/.netrc"/>
+	<Repositories>
+		<Repository src="octokit/octokit.rb"/>
+		<Repository src="opengarden/android-tether"/>
+	</Repositories>
+	<Since days="7"/>
+	<Users>
+		<User name="AMenuor"/>
+		<User name="Test2"/>
+	</Users>
+	<EmailSettings from="angelonicolosi@yanchware.com" to="contacts@yanchware.com" />
+</Configuration>
