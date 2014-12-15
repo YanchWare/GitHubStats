@@ -9,8 +9,8 @@ DONE: Support OAuth tokens. Hardcoding the login data is fine.
 DONE: Have a list of repositories to watch. Hardcoding it is fine. 
 DONE: Fetch the list of issues closed last week, or, with a flag, a different number of days. 
 DONE: Discard issues not opened by one of GitHub users on a given list. Hardcoding the list is fine. 
-Generate a report that lists each GitHub user who closed any issues in the time period, the number of issues closed, and the issues. 
-Sort users by the number of issues closed. 
+DONE: Generate a report that lists each GitHub user who closed any issues in the time period, the number of issues closed, and the issues. 
+DONE: Sort users by the number of issues closed. 
 Send the report by email from a given address to a given address, using a descriptive subject line that includes the date. 
 Create brief README
 
@@ -23,6 +23,7 @@ require 'rexml/document'
 require_relative 'Configuration'
 require_relative 'String'
 require_relative 'SimpleProgressbar'
+require_relative 'Report'
 
 include REXML
 
@@ -88,15 +89,11 @@ issueList = [].tap do |issues|
           
           #Get only issues closed by specific users
           if configuration.Users.include? user.name
-            issueObj = {
-              title: issue.title,
-              closedBy: user.name,
-              closedAt: issue.closed_at
-            }
+            issueObj = Issue.new(issue.title, user.name, issue.closed_at)
             issues << issueObj
           else
             if options[:debug]
-              puts "Skipped issue with title '#{issue.title}'. User not in the specified list."
+              puts "Skipped issue with title '#{issue.title}'. User #{user.name} not in the specified list."
             end            
           end
         else
@@ -115,8 +112,8 @@ issueList = [].tap do |issues|
   end
 end
 
-puts "Found #{issueList.length} interesting issues in the specified repositories."
-
 if options[:debug]
   puts issueList
 end
+
+puts Report.new(configuration.Repositories, issueList).to_s

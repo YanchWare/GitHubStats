@@ -2,13 +2,14 @@
 <Configuration>
 	<Authentication active="true" pathToNetrcFile="~/.netrc"/>
 	<Repositories>
+		<Repository src="okamstudio/godot"/>
+		<Repository src="Caliburn-Micro/Caliburn.Micro"/>
 		<Repository src="octokit/octokit.rb"/>
-		<Repository src="opengarden/android-tether"/>
 	</Repositories>
-	<Since days="7"/>
+	<Since days="17"/>
 	<Users>
-		<User name="AMenuor"/>
-		<User name="Test2"/>
+		<User name="Juan Linietsky"/>
+		<User name="Ribhararnus Pracutiar"/>
 		<User name="Wynn Netherland"/>
 	</Users>
 	<EmailSettings from="angelonicolosi@yanchware.com" to="contacts@yanchware.com" />
