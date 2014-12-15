@@ -30,6 +30,22 @@ class Configuration
     emailSettingsNode = XPath.first(xmlDoc, "Configuration/EmailSettings")
     @emailFrom = XPath.first(emailSettingsNode, "@from").to_s
     @emailTo = XPath.first(emailSettingsNode, "@to").to_s
+    
+    #Setting standards mail options
+    mailOptions = { :address              => XPath.first(emailSettingsNode, "@serverAddress").to_s,
+                    :port                 => XPath.first(emailSettingsNode, "@serverPort").to_s.to_i,
+                    :domain               => XPath.first(emailSettingsNode, "@domain").to_s,
+                    :user_name            => XPath.first(emailSettingsNode, "@userName").to_s,
+                    :password             => XPath.first(emailSettingsNode, "@password").to_s,
+                    :authentication       => XPath.first(emailSettingsNode, "@authentication").to_s,
+                    :enable_starttls_auto => XPath.first(emailSettingsNode, "@enable_starttls_auto").to_s == "true"
+                  }
+    puts mailOptions
+    Mail.defaults do
+      delivery_method :smtp, mailOptions
+    end
+    
+    
   end
   
   def UseAuthentication

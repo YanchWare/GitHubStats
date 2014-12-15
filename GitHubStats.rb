@@ -4,21 +4,14 @@
 
 GitHubStats script
 
-Requirements:
-DONE: Support OAuth tokens. Hardcoding the login data is fine.
-DONE: Have a list of repositories to watch. Hardcoding it is fine. 
-DONE: Fetch the list of issues closed last week, or, with a flag, a different number of days. 
-DONE: Discard issues not opened by one of GitHub users on a given list. Hardcoding the list is fine. 
-DONE: Generate a report that lists each GitHub user who closed any issues in the time period, the number of issues closed, and the issues. 
-DONE: Sort users by the number of issues closed. 
-Send the report by email from a given address to a given address, using a descriptive subject line that includes the date. 
-Create brief README
+Get issue statistics on GitHub repositories.
 
 =end
 
 require 'Octokit'
 require 'optparse'
 require 'rexml/document'
+require 'mail'
 
 require_relative 'Configuration'
 require_relative 'String'
@@ -67,7 +60,6 @@ end
 
 client = Octokit
 if configuration.UseAuthentication
-  #TODO: Test this!!!
   client = Octokit::Client.new(:netrc => true, :netrc_file => configuration.PathToNetrcFile)
   client.login
 end
@@ -116,4 +108,18 @@ if options[:debug]
   puts issueList
 end
 
-puts Report.new(configuration.Repositories, issueList).to_s
+#Build report
+reportContents = Report.new(configuration.Repositories, issueList).to_s
+
+if options[:debug]
+  puts reportContents
+end
+
+Mail.deliver do
+       to configuration.EmailTo
+     from configuration.EmailFrom
+  subject "[GitHubStats] #{Time.now}"
+     body reportContents
+end
+
+puts "\nThe report has been sent to #{configuration.EmailTo}.".green

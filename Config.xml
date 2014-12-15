@@ -1,16 +1,26 @@
 <?xml version="1.0"?>
 <Configuration>
-	<Authentication active="true" pathToNetrcFile="~/.netrc"/>
+	<Authentication active="true" pathToNetrcFile="/Users/Whatever/.netrc"/>
 	<Repositories>
 		<Repository src="okamstudio/godot"/>
 		<Repository src="Caliburn-Micro/Caliburn.Micro"/>
 		<Repository src="octokit/octokit.rb"/>
 	</Repositories>
-	<Since days="17"/>
+	<Since days="7"/>
 	<Users>
 		<User name="Juan Linietsky"/>
 		<User name="Ribhararnus Pracutiar"/>
 		<User name="Wynn Netherland"/>
 	</Users>
-	<EmailSettings from="angelonicolosi@yanchware.com" to="contacts@yanchware.com" />
+	<!-- http://lindsaar.net/2010/3/15/how_to_use_mail_and_actionmailer_3_with_gmail_smtp -->
+	<EmailSettings 
+		serverAddress="smtp.gmail.com"
+		serverPort="587"
+		domain="your.domain.name"
+		userName="username"
+		password="pwd"
+		authentication="plain"
+		enable_starttls_auto="true"
+		from="test@something.com" 
+		to="tset@something.com" />
 </Configuration>
