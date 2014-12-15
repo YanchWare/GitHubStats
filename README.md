@@ -11,7 +11,9 @@ Dependencies
 This script depends on the following Ruby gems:
 
 mail
+
 Octokit
+
 netrc
 
 Configuration
@@ -24,12 +26,15 @@ An simple example of that can be found in this repository.
 Run
 --------------
 You can run the script by typing on the command line the following command:
+
 <code>ruby GitHubStats.rb</code>
 
 You can define the location of the configuration script through command line arguments as shown below:
+
 <code>ruby GitHubStats.rb -c ./config.xml</code>
 
 Moreover you can activate debugging information as follows:
+
 <code>ruby GitHubStats.rb -d</code>
 
 
