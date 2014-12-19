@@ -8,9 +8,9 @@
 	</Repositories>
 	<Since days="7"/>
 	<Users>
-		<User name="Juan Linietsky"/>
+		<User name="Luiz Eduardo Kowalski"/>
 		<User name="Ribhararnus Pracutiar"/>
-		<User name="Wynn Netherland"/>
+		<User name="Saniko"/>
 	</Users>
 	<!-- http://lindsaar.net/2010/3/15/how_to_use_mail_and_actionmailer_3_with_gmail_smtp -->
 	<EmailSettings 

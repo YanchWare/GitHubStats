@@ -40,12 +40,11 @@ class Configuration
                     :authentication       => XPath.first(emailSettingsNode, "@authentication").to_s,
                     :enable_starttls_auto => XPath.first(emailSettingsNode, "@enable_starttls_auto").to_s == "true"
                   }
-    puts mailOptions
+
     Mail.defaults do
       delivery_method :smtp, mailOptions
     end
-    
-    
+        
   end
   
   def UseAuthentication

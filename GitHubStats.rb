@@ -77,11 +77,11 @@ issueList = [].tap do |issues|
         
         #Get only the issues closed in the given time frame
         if timeRange.cover?(issue.closed_at)
-          user = issue.closed_by.rels[:self].get.data
+          user = issue.user.rels[:self].get.data
           
-          #Get only issues closed by specific users
+          #Get only issues opened by specific users
           if configuration.Users.include? user.name
-            issueObj = Issue.new(issue.title, user.name, issue.closed_at)
+            issueObj = Issue.new(issue.title, issue.closed_by.rels[:self].get.data.name, issue.closed_at, user.name)
             issues << issueObj
           else
             if options[:debug]
