@@ -50,7 +50,7 @@ The example used here has been taken from [here][2]
 
 Ouput sample
 --------------
-<code>
+```
 ==========[GitHubStats Report]==========
 Analyzed 3 repositories:
 okamstudio/godot
@@ -76,7 +76,7 @@ Opened by Ribhararnus Pracutiar and closed by Ribhararnus Pracutiar at 2014-12-1
 ----------- Luiz Eduardo Kowalski: 1 issues solved ----------- 
 Title: Can't get private organizations when octokit is authenticated
 Opened by Luiz Eduardo Kowalski and closed by Luiz Eduardo Kowalski at 2014-12-16 16:49:19 UTC
-</code>
+```
 
 [1]:https://rubygems.org/gems/netrc
 [2]:http://lindsaar.net/2010/3/15/how_to_use_mail_and_actionmailer_3_with_gmail_smtp
